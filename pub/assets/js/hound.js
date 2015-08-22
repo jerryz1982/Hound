@@ -287,12 +287,17 @@ var Model = {
     repo = repo[0];
     var info = this.repos[repo],
         url = info.url.replace(/\.git$/, ''),
-        anc = line ? '#L' + line : '';
+        re = /^\S*\:\/\/(\S+?)\/(\S+)/
+        url_match = re.exec(url);
+        server = url_match[1],
+        project = url_match[2],
+        anc = line ? '#l' + line : '';
 
     // Hacky solution to fix _some_ of the 404's when using SSH style URLs
     url = url.replace("git@github.com:", 'https://www.github.com/');
-
-    return url + '/blob/' + branch + '/' + path + anc;
+    alert(server)
+    alert(project)
+    return 'http://' + server + '/gitweb?p=' + project + '.git;a=blob;f=' + path + ';hb=refs/heads/' + branch + anc;
   }
 
 };
