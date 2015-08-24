@@ -295,8 +295,7 @@ var Model = {
 
     // Hacky solution to fix _some_ of the 404's when using SSH style URLs
     url = url.replace("git@github.com:", 'https://www.github.com/');
-    alert(server)
-    alert(project)
+    // Hacky solution for gitweb as code browser
     return 'http://' + server + '/gitweb?p=' + project + '.git;a=blob;f=' + path + ';hb=refs/heads/' + branch + anc;
   }
 
